@@ -1,0 +1,18 @@
+﻿@model Companies
+@{
+    ViewData["Title"] = "Add New Company";
+}
+
+<div class="text-center">
+    <form method="post">
+        <label asp-for="Name">Name:</label>
+        <br />
+        <input type="text" asp-for="Name" />
+        <span asp-validation-for="Name" class="text-danger"></span>
+
+        <br />
+        <br />
+
+        <input type="submit" class="btn btn-success" value="Create" />
+    </form>
+</div>

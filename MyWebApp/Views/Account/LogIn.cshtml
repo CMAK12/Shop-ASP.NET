@@ -1,0 +1,49 @@
+﻿@model Users
+@{
+    ViewData["Title"] = "Log In";
+}
+
+<main class="container d-flex flex-column">
+    <div class="row align-items-center justify-content-center g-0 min-vh-100">
+        <div class="col-12 col-md-8 col-lg-6 col-xxl-4 py-8 py-xl-0">
+            <div class="card smooth-shadow-md">
+                <!-- Card body -->
+                <div class="card-body p-6">
+                    <!-- Form -->
+                    <form method="post">
+                        <div class="mb-3">
+                            <label asp-for="Username" class="form-label">Username or email</label>
+                            <input type="text" class="form-control" name="username" placeholder="Username or email here">
+                            <span asp-validation-for="Username" class="text-danger"></span>
+                        </div>
+                        <div class="mb-3">
+                            <label asp-for="Password" class="form-label">Password</label>
+                            <input type="password" class="form-control" name="password" placeholder="Password here">
+                            <span asp-validation-for="Password" class="text-danger"></span>
+                        </div>
+                        <div>
+                            <!-- Button -->
+                            <div class="d-grid">
+                                <button type="submit" class="btn btn-primary">
+                                    Log
+                                    In
+                                </button>
+                            </div>
+
+                            <div class="d-md-flex justify-content-between mt-4">
+                                <div class="mb-2 mb-md-0">
+                                    <a asp-action="signup" asp-controller="account" class="fs-5">
+                                        Sign
+                                        Up
+                                    </a>
+                                </div>
+
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</main>

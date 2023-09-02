@@ -1,0 +1,35 @@
+﻿@{
+    ViewData["Title"] = "Admin Page";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-4 mb-3 mb-sm-0">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Products</h5>
+                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                    <a asp-action="products" asp-controller="admin" class="btn btn-primary">Let's check</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Companies</h5>
+                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                    <a asp-action="companies" asp-controller="admin" class="btn btn-primary">Let's check</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Users</h5>
+                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                    <a asp-action="users" asp-controller="admin" class="btn btn-primary">Let's check</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,20 @@
+﻿@model Companies
+@{
+    ViewData["Title"] = "Edit " + Model.Name;
+}
+
+<div class="text-center">
+    <form method="post">
+        <input type="hidden" asp-for="Id" />
+
+        <label asp-for="Name">Name:</label>
+        <br />
+        <input type="text" asp-for="Name" value="@Model.Name" />
+        <span asp-validation-for="Name" class="text-danger"></span>
+
+        <br />
+        <br />
+
+        <input type="submit" value="Edit" class="btn btn-success" />
+    </form>
+</div>

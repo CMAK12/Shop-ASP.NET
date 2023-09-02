@@ -1,0 +1,21 @@
+﻿@model IEnumerable<Products>
+@{
+    ViewData["Title"] = "Home";
+}
+
+<div class="container">
+    <div class="row">
+        @foreach (Products product in Model)
+        {
+            <div class="card" style="width: 18rem;">
+                <img src="@product.Photo" class="card-img-top" alt="@product.ProductName">
+                <div class="card-body">
+                    <h5 class="card-title">@product.ProductName</h5>
+                    <p class="card-text">@(product.Description?.Length >= 60 ? product.Description.Substring(60) + "..." : product.Description)</p>
+                    <a class="btn btn-primary" asp-action="productdetail" asp-controller="home" asp-route-id="@product.Id">Go somewhere</a>
+                </div>
+            </div>
+            <br />
+        }
+    </div>
+</div>

@@ -1,0 +1,59 @@
+﻿@model Products
+@{
+    ViewData["Title"] = "Edit " + Model.ProductName;
+}
+
+<div class="text-center">
+    <form method="post" enctype="multipart/form-data">
+        <input type="hidden" asp-for="Id" />
+        
+        <label asp-for="ProductName">Product Name:</label>
+        <br />
+        <input asp-for="ProductName" type="text" value="@Model.ProductName" />
+        <span asp-validation-for="ProductName" class="text-danger"></span>
+
+        <br />
+
+        <label asp-for="Description">Description:</label>
+        <br />
+        <textarea asp-for="Description" type="text">@Model.Description</textarea>
+        <span asp-validation-for="Description" class="text-danger"></span>
+
+        <br />
+
+        <label asp-for="Company" name="company" class="form-label">Company</label>
+        <select class="form-select" asp-for="Company" required>
+            @foreach (Companies company in ViewBag.Companies)
+            {
+                <option value="@company.Name">@company.Name</option>
+            }
+        </select>
+        <span asp-validation-for="Company" class="text-danger"></span>
+
+        <br />
+
+        <label asp-for="Price">Price:</label>
+        <br />
+        <input asp-for="Price" type="number" value="@Model.Price" />
+        <span asp-validation-for="Price" class="text-danger"></span>
+
+        <br />
+
+        <label for="photo">Photo:</label>
+        <br />
+        <input type="file" name="photo" />
+        <span asp-validation-for="Photo" class="text-danger"></span>
+
+        <br />
+
+        <label asp-for="Stock">Stock:</label>
+        <br />
+        <input type="number" asp-for="Stock" value="@Model.Stock" />
+        <span asp-validation-for="Stock" class="text-danger"></span>
+
+        <br />
+        <br />
+
+        <input type="submit" class="btn btn-success" value="Edit" />
+    </form>
+</div>
