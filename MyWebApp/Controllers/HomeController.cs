@@ -15,17 +15,32 @@ namespace MyWebApp.Controllers
             _appEnvironment = appEnvironment;
         }
 
-        public IActionResult Index()
+        public IActionResult Index(string? companyName)
         {
             ViewBag.Companies = _db.Companies;
+            ViewBag.SelectedCompany = companyName;
+
+            if (companyName != null)
+            {
+                var filteredList = _db.Products.Where(product => product.Company == companyName);
+
+                return View(filteredList);
+            }
 
             return View(_db.Products);
         }
 
-        public IActionResult ProductDetail(int id)
+        public IActionResult ProductDetail(int productId)
         {
-            return View(_db.Products.Find(id));
+            var foundedProduct = _db.Products.Find(productId);
+
+            if (foundedProduct == null) 
+                return NotFound();
+
+            return View(foundedProduct);
         }
+
+        public IActionResult Privacy() => View();
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

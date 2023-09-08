@@ -1,0 +1,33 @@
+﻿@model Products
+@{
+    ViewData["Title"] = Model.ProductName;  
+}
+
+<div class="container py-5">
+    <div class="row mt-5">
+        <div class="col-10 mx-auto col-md-6 my-3">
+            <img src="@Model.Photo">
+        </div>
+    </div>
+</div>
+<div class="col-10 mx-auto col-md-6 my-3">
+    <div>
+        <h1 class="product_title">@Model.ProductName</h1>
+        <h5 class="text-info font-italic mb-3">$@Model.Price</h5>
+        <p class="product_desc">Product Description</p>
+        <p class="text-justify product_text">
+            @Model.Description
+        </p>
+        @if (Model.Stock <= 0)
+        {
+            <p class="text-justify product_text">Out of Stock</p>
+        }
+        else
+        {
+            <a class="btn btn-success">Add To Cart</a>
+        }
+    </div>
+</div>
+<br />
+<br />
+<br />

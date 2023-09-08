@@ -11,12 +11,10 @@ namespace MyWebApp.Controllers
     public class AccountController : Controller
     {
         private readonly ShopDbContext _db;
-        private readonly IConfiguration _configuration;
 
         public AccountController (ShopDbContext db, IConfiguration configuration)
         {
             _db = db;
-            _configuration = configuration;
         }
 
         [HttpGet]
@@ -40,7 +38,7 @@ namespace MyWebApp.Controllers
                     return View(user);
                 }
 
-                user.Password = HashPasswordHelper.HashPassword(user.Password);
+                user.Password = PasswordHelper.HashPassword(user.Password);
                 user.Status = "user";
                
                 _db.Users.Add(user);
@@ -75,7 +73,7 @@ namespace MyWebApp.Controllers
             {
                 Users? foundedUser = _db.Users.SingleOrDefault(person => 
                     person.Username == username || person.Email == username);
-                bool verifyPassword = HashPasswordHelper.VerifyPassword(password, foundedUser?.Password);
+                bool verifyPassword = PasswordHelper.VerifyPassword(password, foundedUser?.Password);
                     
                 if (foundedUser != null && verifyPassword)
                 {

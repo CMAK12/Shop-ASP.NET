@@ -1,0 +1,36 @@
+﻿@model Users
+@{
+    ViewData["Title"] = "Edit " + Model.Username;
+}
+
+<div class="text-center">
+    <form method="post">
+
+        <input type="hidden" name="userId" value="@Model.Id" />
+
+        <label asp-for="Username">Username</label>
+        <br />
+        <input name="username" type="text" value="@Model.Username" />
+        <span asp-validation-for="Username" class="text-danger"></span>
+
+        <br />
+
+        <label asp-for="Email">Email</label>
+        <br />
+        <input name="email" type="text" value="@Model.Email" />
+        <span asp-validation-for="Email" class="text-danger"></span>
+
+        <br />
+
+        <label asp-for="Status">Status</label>
+        <br />
+        <input name="status" type="text" value="@Model.Status" />
+        <span asp-validation-for="Status" class="text-danger"></span>
+
+        <br />
+        <br />
+
+        <input type="submit" class="btn btn-success" value="Edit" />
+
+    </form>
+</div>

@@ -3,7 +3,7 @@ using System.Text;
 
 namespace MyWebApp.Helpers
 {
-    public static class HashPasswordHelper
+    public static class PasswordHelper
     {
         public static string HashPassword(string password)
         {

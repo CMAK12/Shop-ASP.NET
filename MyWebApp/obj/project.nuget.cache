@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "FzHh/MxKrW4J+DEUpdcVSxrP6ktmUygNiQ+dmPI9cSpiSmp3KyFm5O1xZWKggt6uNiJqj9ZbThOgFDgyPve3+g==",
+  "dgSpecHash": "wsf3n9BPsyQ8p30uFkxvuLnDfpWjEu0sBa4EYdAHuKlJUu4532KQkyWipnGK326EJoFrah9oXLAhyLudSwGDaQ==",
   "success": true,
   "projectFilePath": "C:\\Programming\\ASP.NET\\MyWebApp\\MyWebApp\\MyWebApp.csproj",
   "expectedPackageFiles": [
@@ -59,6 +59,7 @@
     "C:\\Users\\Dmytro\\.nuget\\packages\\system.resources.resourcemanager\\4.3.0\\system.resources.resourcemanager.4.3.0.nupkg.sha512",
     "C:\\Users\\Dmytro\\.nuget\\packages\\system.runtime\\4.3.0\\system.runtime.4.3.0.nupkg.sha512",
     "C:\\Users\\Dmytro\\.nuget\\packages\\system.runtime.caching\\5.0.0\\system.runtime.caching.5.0.0.nupkg.sha512",
+    "C:\\Users\\Dmytro\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\6.0.0\\system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512",
     "C:\\Users\\Dmytro\\.nuget\\packages\\system.security.accesscontrol\\5.0.0\\system.security.accesscontrol.5.0.0.nupkg.sha512",
     "C:\\Users\\Dmytro\\.nuget\\packages\\system.security.cryptography.cng\\5.0.0\\system.security.cryptography.cng.5.0.0.nupkg.sha512",
     "C:\\Users\\Dmytro\\.nuget\\packages\\system.security.cryptography.protecteddata\\5.0.0\\system.security.cryptography.protecteddata.5.0.0.nupkg.sha512",

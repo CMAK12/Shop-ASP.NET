@@ -3,6 +3,28 @@
     ViewData["Title"] = "Home";
 }
 
+<form method="get" asp-action="index">
+    <div class="align-content-center"> 
+        <select name="companyName">  
+            <option value="">All</option>
+            @foreach (Companies company in ViewBag.Companies)
+            {
+                @if (company.Name == ViewBag.SelectedCompany) 
+                {
+                    <option value="@company.Name" selected>@company.Name</option>
+                }
+                else
+                {
+                    <option value="@company.Name">@company.Name</option>
+                }
+            }
+        </select>
+        <input type="submit" class="btn btn-primary" value="Submit" />
+    </div>
+</form>
+
+<br />
+
 <div class="container">
     <div class="row">
         @foreach (Products product in Model)
@@ -12,7 +34,8 @@
                 <div class="card-body">
                     <h5 class="card-title">@product.ProductName</h5>
                     <p class="card-text">@(product.Description?.Length >= 60 ? product.Description.Substring(60) + "..." : product.Description)</p>
-                    <a class="btn btn-primary" asp-action="productdetail" asp-controller="home" asp-route-id="@product.Id">Go somewhere</a>
+                    <a class="btn btn-primary" asp-action="productdetail" asp-controller="home" asp-route-productId="@product.Id">Go somewhere</a> 
+                    <span class="text-end text-danger">$@product.Price</span>
                 </div>
             </div>
             <br />

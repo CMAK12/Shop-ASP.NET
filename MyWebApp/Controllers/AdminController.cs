@@ -27,11 +27,6 @@ namespace MyWebApp.Controllers
             return View(_db.Products);
         }
 
-        public IActionResult ProductDetail(int productId)
-        {
-            return View(_db.Products.Where(product => product.Id == productId));
-        }
-
         [HttpGet]
         public IActionResult AddNewProduct()
         {
@@ -69,9 +64,13 @@ namespace MyWebApp.Controllers
         [HttpGet]
         public IActionResult EditProduct(int productId)
         {
+            var currentProduct = _db.Products.Find(productId);
             ViewBag.Companies = _db.Companies;
 
-            return View(_db.Products.Find(productId));
+            if (currentProduct == null)
+                return NotFound();
+
+            return View(currentProduct);
         }
 
         [HttpPost]
@@ -133,7 +132,12 @@ namespace MyWebApp.Controllers
         [HttpGet]
         public IActionResult EditCompany(int companyId)
         {
-            return View(_db.Companies.Find(companyId));
+            var currentCompany = _db.Companies.Find(companyId);
+
+            if (currentCompany == null)
+                return NotFound();
+
+            return View(currentCompany);
         }
 
         [HttpPost]
@@ -158,9 +162,52 @@ namespace MyWebApp.Controllers
             return View(_db.Users);
         }
 
-        public IActionResult UserDetail()
+        [HttpGet]
+        public IActionResult EditUser(int userId)
         {
+            var currentUser = _db.Users.Find(userId);
+
+            if (currentUser == null)
+                return NotFound();
+
+            return View(currentUser);
+        }
+
+        [HttpPost]
+        public IActionResult EditUser(int userId, string username, string email, string status)
+        {
+            if (ModelState.IsValid)
+            {
+                var userToEdit = _db.Users.Find(userId);
+
+                // Устанавливаем только свойства, которые вы хотите обновить
+                userToEdit.Username = username;
+                userToEdit.Email = email;
+                userToEdit.Status = status;
+
+                _db.SaveChanges();
+
+                return RedirectToAction("Users");
+            }
+
+            var errors = ModelState.Values.SelectMany(v => v.Errors).Select(e => e.ErrorMessage);
+            foreach (var error in errors)
+            {
+                Console.WriteLine(error);
+            }
+
             return View();
+        }
+
+
+        public IActionResult DeleteUser(int userId)
+        {
+            var userToDelete = _db.Companies.Find(userId);
+
+            _db.Companies.Remove(userToDelete);
+            _db.SaveChanges();
+
+            return RedirectToAction("Users");
         }
     }
 }
