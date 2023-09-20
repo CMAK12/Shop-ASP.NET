@@ -13,5 +13,6 @@ namespace MyWebApp
         public DbSet<Products> Products { get; set; }
         public DbSet<Companies> Companies { get; set; }
         public DbSet<Users> Users { get; set; }
+        public DbSet<CartItem> CartItem { get; set; }
     }
 }

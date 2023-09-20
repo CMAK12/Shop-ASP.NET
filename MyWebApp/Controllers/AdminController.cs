@@ -17,7 +17,7 @@ namespace MyWebApp.Controllers
             _appEnvironment = appEnvironment;
         }
 
-        public IActionResult AdminPanel()
+        public IActionResult Index()
         {
             return View();
         }
@@ -54,6 +54,9 @@ namespace MyWebApp.Controllers
         public IActionResult DeleteProduct(int productId)
         {
             Products? productToDelete = _db.Products.Find(productId);
+
+            if (productToDelete == null)
+                return NotFound();
 
             _db.Products.Remove(productToDelete);
             _db.SaveChanges();
@@ -123,6 +126,9 @@ namespace MyWebApp.Controllers
         {
             var companyToDelete = _db.Companies.Find(companyId);
 
+            if (companyToDelete == null)
+                return NotFound();
+
             _db.Companies.Remove(companyToDelete);
             _db.SaveChanges();
 
@@ -180,7 +186,6 @@ namespace MyWebApp.Controllers
             {
                 var userToEdit = _db.Users.Find(userId);
 
-                // Устанавливаем только свойства, которые вы хотите обновить
                 userToEdit.Username = username;
                 userToEdit.Email = email;
                 userToEdit.Status = status;
@@ -190,19 +195,15 @@ namespace MyWebApp.Controllers
                 return RedirectToAction("Users");
             }
 
-            var errors = ModelState.Values.SelectMany(v => v.Errors).Select(e => e.ErrorMessage);
-            foreach (var error in errors)
-            {
-                Console.WriteLine(error);
-            }
-
             return View();
         }
-
 
         public IActionResult DeleteUser(int userId)
         {
             var userToDelete = _db.Companies.Find(userId);
+
+            if (userToDelete == null)
+                return NotFound();
 
             _db.Companies.Remove(userToDelete);
             _db.SaveChanges();

@@ -12,7 +12,7 @@ namespace MyWebApp.Controllers
     {
         private readonly ShopDbContext _db;
 
-        public AccountController (ShopDbContext db, IConfiguration configuration)
+        public AccountController (ShopDbContext db)
         {
             _db = db;
         }

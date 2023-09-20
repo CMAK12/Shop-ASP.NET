@@ -1,0 +1,74 @@
+﻿@model List<CartItem>
+@{
+    ViewData["Title"] = "Cart";
+}
+
+@if (Model != null)
+{
+    <div class="table-responsive">
+
+        <table class="table text-nowrap mb-0">
+            <thead class="table-light">
+                <tr>
+                    <th>Product Name</th>
+                    <th>Description</th>
+                    <th>Company</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (CartItem cartItem in Model)
+                {
+                    <tr>
+
+                        <td class="align-middle">
+                            <div class="d-flex
+                            align-items-center">
+                                <div>
+                                    <div class="icon-shape icon-md border p-4 rounded-1">
+                                        <img src="@cartItem.Product.Photo" alt="@cartItem.Product.ProductName" style="width: 24px; height: 23px">
+                                    </div>
+                                </div>
+                                <div class="ms-3 lh-1">
+                                    <h5 class=" mb-1">
+                                        <a asp-action="productdetail" asp-controller="home" asp-route-productId="@cartItem.Product.Id" class="text-inherit">
+                                            @cartItem.Product.ProductName
+                                        </a>
+                                    </h5>
+
+                                </div>
+                            </div>
+                        </td>
+                        <td class="align-middle">@(cartItem.Product.Description.Length >= 30 ? cartItem.Product.Description.Substring(0, 30) + "..." : cartItem.Product.Description)</td>
+                        <td class="align-middle">@cartItem.Product.Company</td>
+                        <td class="align-middle">@cartItem.Product.Price</td>
+                        <td class="align-middle">@cartItem.Quantity</td>
+                        <td class="align-middle">
+                            <a class="btn btn-success" asp-action="AddToCart" asp-controller="cart" asp-route-id="@cartItem.Product.Id">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16"> <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z" /> <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z" /> </svg>
+                                Add
+                            </a>
+                            <a class="btn btn-danger" asp-action="RemoveItem" asp-controller="cart" asp-route-id="@cartItem.Product.Id" asp-route-cartId="@cartItem.CartId">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil" viewBox="0 0 16 16"> <path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z" /> </svg>
+                                Remove
+                            </a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+        <br>
+
+        <div class="text-center">
+            <button class="btn btn-success">Buy all</button>
+        </div>
+
+    </div>
+}
+else
+{
+    <div>Cart is empty</div>
+}

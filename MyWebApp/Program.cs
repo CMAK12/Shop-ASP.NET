@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using MyWebApp;
 using Microsoft.AspNetCore.Authentication.Cookies;
+using MyWebApp.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -17,6 +18,14 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
     });
 
 builder.Services.AddAuthorization();
+
+builder.Services.AddScoped<Cart>();
+
+builder.Services.AddSession(options =>
+{
+    options.IdleTimeout = TimeSpan.FromDays(30);
+});
+builder.Services.AddHttpContextAccessor();
 
 // Connect Database MS SQL
 var provider = builder.Services.BuildServiceProvider();
@@ -39,6 +48,8 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
+
+app.UseSession();
 
 app.UseAuthentication();
 app.UseAuthorization();

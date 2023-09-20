@@ -35,6 +35,7 @@
                     <h5 class="card-title">@product.ProductName</h5>
                     <p class="card-text">@(product.Description?.Length >= 60 ? product.Description.Substring(60) + "..." : product.Description)</p>
                     <a class="btn btn-primary" asp-action="productdetail" asp-controller="home" asp-route-productId="@product.Id">Go somewhere</a> 
+                    <a class="btn btn-success" asp-action="addtocart" asp-controller="cart" asp-route-id="@product.Id">Add To Cart</a>
                     <span class="text-end text-danger">$@product.Price</span>
                 </div>
             </div>
