@@ -2,7 +2,7 @@
 using MyWebApp.Models;
 using System.Diagnostics;
 
-namespace MyWebApp.Controllers
+namespace MyWebApp.Controllers.MvcController
 {
     public class HomeController : Controller
     {
@@ -34,7 +34,7 @@ namespace MyWebApp.Controllers
         {
             var foundedProduct = _db.Products.Find(productId);
 
-            if (foundedProduct == null) 
+            if (foundedProduct == null)
                 return NotFound();
 
             return View(foundedProduct);

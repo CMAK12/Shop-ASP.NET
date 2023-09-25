@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 
 namespace MyWebApp.Models
 {
@@ -17,6 +18,7 @@ namespace MyWebApp.Models
         [MinLength(8, ErrorMessage = "Password must be at least 8 characters")]
         public string Password { get; set; }
         [NotMapped]
+        [JsonIgnore]
         [Required(ErrorMessage = "Confirm Password must be filled")]
         [Compare("Password", ErrorMessage = "Password don't match")]
         public string ConfirmPassword { get; set; }

@@ -6,13 +6,13 @@ using System.Security.Claims;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Authentication.Cookies;
 
-namespace MyWebApp.Controllers
+namespace MyWebApp.Controllers.MvcController
 {
     public class AccountController : Controller
     {
         private readonly ShopDbContext _db;
 
-        public AccountController (ShopDbContext db)
+        public AccountController(ShopDbContext db)
         {
             _db = db;
         }
@@ -28,7 +28,7 @@ namespace MyWebApp.Controllers
         {
             if (ModelState.IsValid)
             {
-                bool isExistingUser = _db.Users.Any(person => 
+                bool isExistingUser = _db.Users.Any(person =>
                     person.Username == user.Username || person.Email == user.Email);
 
                 if (isExistingUser)
@@ -40,7 +40,7 @@ namespace MyWebApp.Controllers
 
                 user.Password = PasswordHelper.HashPassword(user.Password);
                 user.Status = "user";
-               
+
                 _db.Users.Add(user);
                 _db.SaveChanges();
 
@@ -71,16 +71,16 @@ namespace MyWebApp.Controllers
         {
             if (ModelState.IsValid)
             {
-                Users? foundedUser = _db.Users.SingleOrDefault(person => 
+                Users? foundedUser = _db.Users.SingleOrDefault(person =>
                     person.Username == username || person.Email == username);
                 bool verifyPassword = PasswordHelper.VerifyPassword(password, foundedUser?.Password);
-                    
+
                 if (foundedUser != null && verifyPassword)
                 {
-                    var claims = new List<Claim>() 
-                    { 
+                    var claims = new List<Claim>()
+                    {
                         new Claim(ClaimTypes.Name, foundedUser.Username),
-                        new Claim(ClaimTypes.Role, foundedUser.Status) 
+                        new Claim(ClaimTypes.Role, foundedUser.Status)
                     };
 
                     ClaimsIdentity claimsIdentity = new ClaimsIdentity(claims, "Cookies");

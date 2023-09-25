@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using MyWebApp.Models;
 
-namespace MyWebApp.Controllers
+namespace MyWebApp.Controllers.MvcController
 {
     public class CartController : Controller
     {
@@ -21,7 +21,6 @@ namespace MyWebApp.Controllers
             return View(items);
         }
 
-        
         public RedirectToActionResult AddToCart(int id)
         {
             var item = _db.Products.FirstOrDefault(i => i.Id == id);
@@ -32,7 +31,7 @@ namespace MyWebApp.Controllers
             return RedirectToAction("Index");
         }
 
-        public RedirectToActionResult RemoveItem(int id, string cartId) 
+        public RedirectToActionResult RemoveItem(int id, string cartId)
         {
             var item = _db.CartItem.SingleOrDefault(item => item.Product.Id == id && item.CartId == cartId);
 

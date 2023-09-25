@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Authorization;
 using MyWebApp.Models;
 using MyWebApp.Helpers;
 
-namespace MyWebApp.Controllers
+namespace MyWebApp.Controllers.MvcController
 {
     [Authorize(Roles = "admin")]
     public class AdminController : Controller
@@ -38,7 +38,7 @@ namespace MyWebApp.Controllers
         [HttpPost]
         public IActionResult AddNewProduct(Products product, IFormFile photo)
         {
-            if (ModelState.IsValid && photo != null) 
+            if (ModelState.IsValid && photo != null)
             {
                 product.Photo = UploadPhotoHelper.UploadPhoto(photo, _appEnvironment);
 
@@ -57,6 +57,8 @@ namespace MyWebApp.Controllers
 
             if (productToDelete == null)
                 return NotFound();
+
+            DeletePhotoHelper.DelPhoto(productToDelete.Photo, _appEnvironment);
 
             _db.Products.Remove(productToDelete);
             _db.SaveChanges();
@@ -85,7 +87,7 @@ namespace MyWebApp.Controllers
 
                 if (photo != null)
                     product.Photo = UpdatePhotoHepler.UpdatePhoto(product.Photo, photo, _appEnvironment);
-                else 
+                else
                     product.Photo = productToEdit.Photo;
 
                 _db.Entry(productToEdit).CurrentValues.SetValues(product);
@@ -165,13 +167,13 @@ namespace MyWebApp.Controllers
 
         public IActionResult Users()
         {
-            return View(_db.Users);
+            return View(_db.Companies);
         }
 
         [HttpGet]
         public IActionResult EditUser(int userId)
         {
-            var currentUser = _db.Users.Find(userId);
+            var currentUser = _db.Companies.Find(userId);
 
             if (currentUser == null)
                 return NotFound();
