@@ -25,48 +25,8 @@
       "PackagePath": "staticwebassets\\files\\logo.svg"
     },
     {
-      "Id": "C:\\Programming\\ASP.NET\\MyWebApp\\MyWebApp\\wwwroot\\images\\283b2fce-0857-49ae-8b63-f121eb8c3ddf_images.jpg",
-      "PackagePath": "staticwebassets\\images\\283b2fce-0857-49ae-8b63-f121eb8c3ddf_images.jpg"
-    },
-    {
-      "Id": "C:\\Programming\\ASP.NET\\MyWebApp\\MyWebApp\\wwwroot\\images\\4206dee0-59ab-43ac-b8f6-4ca7c9af1bc0_images.jpg",
-      "PackagePath": "staticwebassets\\images\\4206dee0-59ab-43ac-b8f6-4ca7c9af1bc0_images.jpg"
-    },
-    {
-      "Id": "C:\\Programming\\ASP.NET\\MyWebApp\\MyWebApp\\wwwroot\\images\\4d6dedab-5430-4da8-a949-4d42b14cda2a_index.png",
-      "PackagePath": "staticwebassets\\images\\4d6dedab-5430-4da8-a949-4d42b14cda2a_index.png"
-    },
-    {
-      "Id": "C:\\Programming\\ASP.NET\\MyWebApp\\MyWebApp\\wwwroot\\images\\78a83d3c-d0d3-4e30-88f6-9359105d2cf3_images.jpg",
-      "PackagePath": "staticwebassets\\images\\78a83d3c-d0d3-4e30-88f6-9359105d2cf3_images.jpg"
-    },
-    {
       "Id": "C:\\Programming\\ASP.NET\\MyWebApp\\MyWebApp\\wwwroot\\images\\8f95b471-3cd8-4657-8a88-847a5a16f070_sm-f946_zfold5_openfront115_phantom-black_230511-large-webp.webp",
       "PackagePath": "staticwebassets\\images\\8f95b471-3cd8-4657-8a88-847a5a16f070_sm-f946_zfold5_openfront115_phantom-black_230511-large-webp.webp"
-    },
-    {
-      "Id": "C:\\Programming\\ASP.NET\\MyWebApp\\MyWebApp\\wwwroot\\images\\8fdc8f13-81a6-4305-a8c9-6934c453f299_images.jpg",
-      "PackagePath": "staticwebassets\\images\\8fdc8f13-81a6-4305-a8c9-6934c453f299_images.jpg"
-    },
-    {
-      "Id": "C:\\Programming\\ASP.NET\\MyWebApp\\MyWebApp\\wwwroot\\images\\a6cd2b47-d41d-4069-a523-76b41e345a5d_images.jpg",
-      "PackagePath": "staticwebassets\\images\\a6cd2b47-d41d-4069-a523-76b41e345a5d_images.jpg"
-    },
-    {
-      "Id": "C:\\Programming\\ASP.NET\\MyWebApp\\MyWebApp\\wwwroot\\images\\b1630353-6628-4e44-b6e7-bb02bd04c23a_Без назви.jpg",
-      "PackagePath": "staticwebassets\\images\\b1630353-6628-4e44-b6e7-bb02bd04c23a_Без назви.jpg"
-    },
-    {
-      "Id": "C:\\Programming\\ASP.NET\\MyWebApp\\MyWebApp\\wwwroot\\images\\bbee24f6-2633-4fa7-9273-e9bb6d327fbc_images.jpg",
-      "PackagePath": "staticwebassets\\images\\bbee24f6-2633-4fa7-9273-e9bb6d327fbc_images.jpg"
-    },
-    {
-      "Id": "C:\\Programming\\ASP.NET\\MyWebApp\\MyWebApp\\wwwroot\\images\\d2490f4c-7180-4a5c-a516-88dbfb97a928_index.png",
-      "PackagePath": "staticwebassets\\images\\d2490f4c-7180-4a5c-a516-88dbfb97a928_index.png"
-    },
-    {
-      "Id": "C:\\Programming\\ASP.NET\\MyWebApp\\MyWebApp\\wwwroot\\images\\d72c3f60-b1c9-4fc4-868e-07adc9358e40_images.jpg",
-      "PackagePath": "staticwebassets\\images\\d72c3f60-b1c9-4fc4-868e-07adc9358e40_images.jpg"
     },
     {
       "Id": "C:\\Programming\\ASP.NET\\MyWebApp\\MyWebApp\\wwwroot\\js\\site.js",

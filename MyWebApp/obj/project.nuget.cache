@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "wsf3n9BPsyQ8p30uFkxvuLnDfpWjEu0sBa4EYdAHuKlJUu4532KQkyWipnGK326EJoFrah9oXLAhyLudSwGDaQ==",
+  "dgSpecHash": "n40bBNtysPJb1q4zArJH9STOfqPQoalxir8UF3GNp60HW3miT1XnMlYL2cZOW4xX2H1LMEdPgRnL97aVDIRIRw==",
   "success": true,
   "projectFilePath": "C:\\Programming\\ASP.NET\\MyWebApp\\MyWebApp\\MyWebApp.csproj",
   "expectedPackageFiles": [
@@ -39,6 +39,7 @@
     "C:\\Users\\Dmytro\\.nuget\\packages\\microsoft.netcore.platforms\\5.0.0\\microsoft.netcore.platforms.5.0.0.nupkg.sha512",
     "C:\\Users\\Dmytro\\.nuget\\packages\\microsoft.netcore.targets\\1.1.0\\microsoft.netcore.targets.1.1.0.nupkg.sha512",
     "C:\\Users\\Dmytro\\.nuget\\packages\\microsoft.sqlserver.server\\1.0.0\\microsoft.sqlserver.server.1.0.0.nupkg.sha512",
+    "C:\\Users\\Dmytro\\.nuget\\packages\\microsoft.visualstudio.azure.containers.tools.targets\\1.19.4\\microsoft.visualstudio.azure.containers.tools.targets.1.19.4.nupkg.sha512",
     "C:\\Users\\Dmytro\\.nuget\\packages\\microsoft.win32.registry\\5.0.0\\microsoft.win32.registry.5.0.0.nupkg.sha512",
     "C:\\Users\\Dmytro\\.nuget\\packages\\microsoft.win32.systemevents\\5.0.0\\microsoft.win32.systemevents.5.0.0.nupkg.sha512",
     "C:\\Users\\Dmytro\\.nuget\\packages\\mono.texttemplating\\2.2.1\\mono.texttemplating.2.2.1.nupkg.sha512",
