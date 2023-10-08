@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using MyWebApp.Models;
 
 namespace MyWebApp.Controllers.ApiControllers
@@ -15,15 +16,15 @@ namespace MyWebApp.Controllers.ApiControllers
         }
 
         [HttpGet]
-        public ActionResult<IEnumerable<Users>> Get()
+        public async Task<ActionResult<IEnumerable<Users>>> Get()
         {
-            return _db.Users.ToList();
+            return await _db.Users.ToListAsync();
         }
 
         [HttpGet("{id}")]
-        public ActionResult<Users> Get(int id)
+        public async Task<ActionResult<Users>> Get(int id)
         {
-            Users user = _db.Users.Find(id);
+            Users user = await _db.Users.FindAsync(id);
 
             if (user == null) 
                 return NotFound();
@@ -32,45 +33,45 @@ namespace MyWebApp.Controllers.ApiControllers
         }
 
         [HttpPost]
-        public ActionResult<Users> Post(Users user)
+        public async Task<ActionResult<Users>> Post(Users user)
         {
             if (user == null)
                 return BadRequest();
 
-            _db.Users.Add(user);
-            _db.SaveChanges();
+            await _db.Users.AddAsync(user);
+            await _db.SaveChangesAsync();
 
             return Ok(user);
         }
 
         [HttpPut]
-        public ActionResult<Users> Put(Users user)
+        public async Task<ActionResult<Users>> Put(Users user)
         {
             if (user == null)
             {
                 return BadRequest();
             }
-            if (!_db.Users.Any(x => x.Id == user.Id))
+            if (!await _db.Users.AnyAsync(x => x.Id == user.Id))
             {
                 return NotFound();
             }
 
             _db.Update(user);
-            _db.SaveChanges();
+            await _db.SaveChangesAsync();
 
             return Ok(user);
         }
 
         [HttpDelete("{id}")]
-        public ActionResult<Users> Delete(int id)
+        public async Task<ActionResult<Users>> Delete(int id)
         {
-            Users user = _db.Users.Find(id);
+            Users user = await _db.Users.FindAsync(id);
 
             if (user == null)
                 return NotFound();
 
             _db.Users.Remove(user);
-            _db.SaveChanges();
+            await _db.SaveChangesAsync();
 
             return Ok(user);
         }

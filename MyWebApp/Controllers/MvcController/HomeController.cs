@@ -30,9 +30,9 @@ namespace MyWebApp.Controllers.MvcController
             return View(_db.Products);
         }
 
-        public IActionResult ProductDetail(int productId)
+        public async Task<IActionResult> ProductDetailAsync(int productId)
         {
-            var foundedProduct = _db.Products.Find(productId);
+            var foundedProduct = await _db.Products.FindAsync(productId);
 
             if (foundedProduct == null)
                 return NotFound();

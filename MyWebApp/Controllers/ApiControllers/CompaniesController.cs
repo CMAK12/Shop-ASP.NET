@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using MyWebApp.Models;
 
 namespace MyWebApp.Controllers.ApiControllers
@@ -15,15 +16,15 @@ namespace MyWebApp.Controllers.ApiControllers
         }
 
         [HttpGet]
-        public ActionResult<IEnumerable<Companies>> Get()
+        public async Task<ActionResult<IEnumerable<Companies>>> Get()
         {
-            return _db.Companies.ToList();
+            return await _db.Companies.ToListAsync();
         }
 
         [HttpGet("{id}")]
-        public ActionResult<Companies> Get(int id)
+        public async Task<ActionResult<Companies>> Get(int id)
         {
-            Companies company = _db.Companies.Find(id);
+            Companies company = await _db.Companies.FindAsync(id);
 
             if (company == null)
                 return NotFound();
@@ -32,45 +33,45 @@ namespace MyWebApp.Controllers.ApiControllers
         }
 
         [HttpPost]
-        public ActionResult<Companies> Post(Companies company)
+        public async Task<ActionResult<Companies>> Post(Companies company)
         {
             if (company == null)
                 return BadRequest();
 
-            _db.Companies.Add(company);
-            _db.SaveChanges();
+            await _db.Companies.AddAsync(company);
+            await _db.SaveChangesAsync();
 
             return Ok(company);
         }
 
         [HttpPut]
-        public ActionResult<Companies> Put(Companies company)
+        public async Task<ActionResult<Companies>> Put(Companies company)
         {
             if (company == null)
             {
                 return BadRequest();
             }
-            if (!_db.Companies.Any(x => x.Id == company.Id))
+            if (!await _db.Companies.AnyAsync(x => x.Id == company.Id))
             {
                 return NotFound();
             }
 
             _db.Update(company);
-            _db.SaveChanges();
+            await _db.SaveChangesAsync();
 
             return Ok(company);
         }
 
         [HttpDelete("{id}")]
-        public ActionResult<Companies> Delete(int id)
+        public async Task<ActionResult<Companies>> Delete(int id)
         {
-            Companies company = _db.Companies.Find(id);
+            Companies company = await _db.Companies.FindAsync(id);
 
             if (company == null)
                 return NotFound();
 
             _db.Companies.Remove(company);
-            _db.SaveChanges();
+            await _db.SaveChangesAsync();
 
             return Ok(company);
         }

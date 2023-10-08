@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using MyWebApp.Models;
 
 namespace MyWebApp.Controllers.MvcController
@@ -14,29 +15,35 @@ namespace MyWebApp.Controllers.MvcController
             _db = db;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> IndexAsync()
         {
-            var items = _cart.GetCartItems();
+            var items = await _cart.GetCartItemsAsync();
+            ViewBag.TotalPrice = 0;
+
+            foreach (var item in items)
+            {
+                ViewBag.TotalPrice += item.Product.Price * item.Quantity;
+            }
 
             return View(items);
         }
 
-        public RedirectToActionResult AddToCart(int id)
+        public async Task<RedirectToActionResult> AddToCartAsync(int id)
         {
-            var item = _db.Products.FirstOrDefault(i => i.Id == id);
+            var item = await _db.Products.FirstOrDefaultAsync(i => i.Id == id);
 
             if (item != null)
-                _cart.AddToCart(item);
+                _cart.AddToCartAsync(item);
 
             return RedirectToAction("Index");
         }
 
-        public RedirectToActionResult RemoveItem(int id, string cartId)
+        public async Task<RedirectToActionResult> RemoveItemAsync(int id, string cartId)
         {
-            var item = _db.CartItem.SingleOrDefault(item => item.Product.Id == id && item.CartId == cartId);
+            var item = await _db.CartItem.SingleOrDefaultAsync(item => item.Product.Id == id && item.CartId == cartId);
 
             if (item != null)
-                _cart.RemoveFromCart(item);
+                _cart.RemoveFromCartAsync(item);
 
             return RedirectToAction("Index");
         }

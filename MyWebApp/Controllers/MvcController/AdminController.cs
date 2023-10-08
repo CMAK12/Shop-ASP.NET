@@ -36,14 +36,14 @@ namespace MyWebApp.Controllers.MvcController
         }
 
         [HttpPost]
-        public IActionResult AddNewProduct(Products product, IFormFile photo)
+        public async Task<IActionResult> AddNewProductAsync(Products product, IFormFile photo)
         {
             if (ModelState.IsValid && photo != null)
             {
-                product.Photo = UploadPhotoHelper.UploadPhoto(photo, _appEnvironment);
+                product.Photo = await UploadPhotoHelper.UploadPhotoAsync(photo, _appEnvironment);
 
-                _db.Products.Add(product);
-                _db.SaveChanges();
+                await _db.Products.AddAsync(product);
+                await _db.SaveChangesAsync();
 
                 return RedirectToAction("Products");
             }
@@ -51,9 +51,9 @@ namespace MyWebApp.Controllers.MvcController
             return View();
         }
 
-        public IActionResult DeleteProduct(int productId)
+        public async Task<IActionResult> DeleteProductAsync(int productId)
         {
-            Products? productToDelete = _db.Products.Find(productId);
+            Products? productToDelete = await _db.Products.FindAsync(productId);
 
             if (productToDelete == null)
                 return NotFound();
@@ -61,15 +61,15 @@ namespace MyWebApp.Controllers.MvcController
             DeletePhotoHelper.DelPhoto(productToDelete.Photo, _appEnvironment);
 
             _db.Products.Remove(productToDelete);
-            _db.SaveChanges();
+            await _db.SaveChangesAsync();
 
             return RedirectToAction("Products");
         }
 
         [HttpGet]
-        public IActionResult EditProduct(int productId)
+        public async Task<IActionResult> EditProductAsync(int productId)
         {
-            var currentProduct = _db.Products.Find(productId);
+            var currentProduct = _db.Products.FindAsync(productId);
             ViewBag.Companies = _db.Companies;
 
             if (currentProduct == null)
@@ -79,19 +79,19 @@ namespace MyWebApp.Controllers.MvcController
         }
 
         [HttpPost]
-        public IActionResult EditProduct(Products product, IFormFile? photo)
+        public async Task<IActionResult> EditProductAsync(Products product, IFormFile? photo)
         {
             if (ModelState.IsValid)
             {
-                Products? productToEdit = _db.Products.Find(product.Id);
+                Products? productToEdit = await _db.Products.FindAsync(product.Id);
 
                 if (photo != null)
-                    product.Photo = UpdatePhotoHepler.UpdatePhoto(product.Photo, photo, _appEnvironment);
+                    product.Photo = await UpdatePhotoHepler.UpdatePhotoAsync(product.Photo, photo, _appEnvironment);
                 else
                     product.Photo = productToEdit.Photo;
 
                 _db.Entry(productToEdit).CurrentValues.SetValues(product);
-                _db.SaveChanges();
+                await _db.SaveChangesAsync();
 
                 return RedirectToAction("Products");
             }
@@ -111,12 +111,12 @@ namespace MyWebApp.Controllers.MvcController
         }
 
         [HttpPost]
-        public IActionResult AddNewCompany(Companies company)
+        public async Task<IActionResult> AddNewCompanyAsync(Companies company)
         {
             if (ModelState.IsValid)
             {
-                _db.Companies.Add(company);
-                _db.SaveChanges();
+                await _db.Companies.FindAsync(company);
+                await _db.SaveChangesAsync();
 
                 return RedirectToAction("Companies");
             }
@@ -124,23 +124,23 @@ namespace MyWebApp.Controllers.MvcController
             return View();
         }
 
-        public IActionResult DeleteCompany(int companyId)
+        public async Task<IActionResult> DeleteCompanyAsync(int companyId)
         {
-            var companyToDelete = _db.Companies.Find(companyId);
+            var companyToDelete = await _db.Companies.FindAsync(companyId);
 
             if (companyToDelete == null)
                 return NotFound();
 
             _db.Companies.Remove(companyToDelete);
-            _db.SaveChanges();
+            await _db.SaveChangesAsync();
 
             return RedirectToAction("Companies");
         }
 
         [HttpGet]
-        public IActionResult EditCompany(int companyId)
+        public async Task<IActionResult> EditCompanyAsync(int companyId)
         {
-            var currentCompany = _db.Companies.Find(companyId);
+            var currentCompany = await _db.Companies.FindAsync(companyId);
 
             if (currentCompany == null)
                 return NotFound();
@@ -149,15 +149,15 @@ namespace MyWebApp.Controllers.MvcController
         }
 
         [HttpPost]
-        public IActionResult EditCompany(Companies company)
+        public async Task<IActionResult> EditCompanyAsync(Companies company)
         {
             if (ModelState.IsValid)
             {
-                Companies companyToEdit = _db.Companies.Find(company.Id);
+                Companies companyToEdit = await _db.Companies.FindAsync(company.Id);
 
                 companyToEdit.Name = company.Name;
 
-                _db.SaveChanges();
+                await _db.SaveChangesAsync();
 
                 return RedirectToAction("Companies");
             }
@@ -171,9 +171,9 @@ namespace MyWebApp.Controllers.MvcController
         }
 
         [HttpGet]
-        public IActionResult EditUser(int userId)
+        public async Task<IActionResult> EditUserAsync(int userId)
         {
-            var currentUser = _db.Companies.Find(userId);
+            var currentUser = await _db.Companies.FindAsync(userId);
 
             if (currentUser == null)
                 return NotFound();
@@ -182,17 +182,17 @@ namespace MyWebApp.Controllers.MvcController
         }
 
         [HttpPost]
-        public IActionResult EditUser(int userId, string username, string email, string status)
+        public async Task<IActionResult> EditUserAsync(int userId, string username, string email, string status)
         {
             if (ModelState.IsValid)
             {
-                var userToEdit = _db.Users.Find(userId);
+                var userToEdit = await _db.Users.FindAsync(userId);
 
                 userToEdit.Username = username;
                 userToEdit.Email = email;
                 userToEdit.Status = status;
 
-                _db.SaveChanges();
+                await _db.SaveChangesAsync();
 
                 return RedirectToAction("Users");
             }
@@ -200,15 +200,15 @@ namespace MyWebApp.Controllers.MvcController
             return View();
         }
 
-        public IActionResult DeleteUser(int userId)
+        public async Task<IActionResult> DeleteUserAsync(int userId)
         {
-            var userToDelete = _db.Companies.Find(userId);
+            var userToDelete = await _db.Companies.FindAsync(userId);
 
             if (userToDelete == null)
                 return NotFound();
 
             _db.Companies.Remove(userToDelete);
-            _db.SaveChanges();
+            await _db.SaveChangesAsync();
 
             return RedirectToAction("Users");
         }

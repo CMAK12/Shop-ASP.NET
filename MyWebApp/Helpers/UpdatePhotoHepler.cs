@@ -2,7 +2,7 @@
 {
     public static class UpdatePhotoHepler
     {
-        public static string UpdatePhoto(string photoPath, IFormFile photo, IWebHostEnvironment appEnvironment)
+        public static async Task<string> UpdatePhotoAsync(string photoPath, IFormFile photo, IWebHostEnvironment appEnvironment)
         {
             string uniqueName = Guid.NewGuid().ToString() + '_' + photo.FileName;
             string imagesPath = Path.Combine(appEnvironment.WebRootPath, "images");
@@ -13,7 +13,7 @@
 
             using (var fileStream = new FileStream(fullPath, FileMode.Create))
             {
-                photo.CopyTo(fileStream);
+                await photo.CopyToAsync(fileStream);
             }
 
             return "/images/" + uniqueName;

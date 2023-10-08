@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using MyWebApp.Models;
 
 namespace MyWebApp.Controllers.ApiControllers
@@ -15,15 +16,15 @@ namespace MyWebApp.Controllers.ApiControllers
         }
 
         [HttpGet]
-        public ActionResult<IEnumerable<CartItem>> Get()
+        public async Task<ActionResult<IEnumerable<CartItem>>> Get()
         {
-            return _db.CartItem.ToList();
+            return await _db.CartItem.ToListAsync();
         }
 
         [HttpGet("{id}")]
-        public ActionResult<CartItem> Get(int id)
+        public async Task<ActionResult<CartItem>> Get(int id)
         {
-            CartItem cartItem = _db.CartItem.Find(id);
+            CartItem cartItem = await _db.CartItem.FindAsync(id);
 
             if (cartItem == null)
                 return NotFound();
@@ -32,45 +33,45 @@ namespace MyWebApp.Controllers.ApiControllers
         }
 
         [HttpPost]
-        public ActionResult<CartItem> Post(CartItem cartItem)
+        public async Task<ActionResult<CartItem>> Post(CartItem cartItem)
         {
             if (cartItem == null)
                 return BadRequest();
 
-            _db.CartItem.Add(cartItem);
-            _db.SaveChanges();
+            await _db.CartItem.AddAsync(cartItem);
+            await _db.SaveChangesAsync();
 
             return Ok(cartItem);
         }
 
         [HttpPut]
-        public ActionResult<CartItem> Put(CartItem cartItem)
+        public async Task<ActionResult<CartItem>> Put(CartItem cartItem)
         {
             if (cartItem == null)
             {
                 return BadRequest();
             }
-            if (!_db.CartItem.Any(x => x.ItemId == cartItem.ItemId))
+            if (!await _db.CartItem.AnyAsync(x => x.ItemId == cartItem.ItemId))
             {
                 return NotFound();
             }
 
             _db.Update(cartItem);
-            _db.SaveChanges();
+            await _db.SaveChangesAsync();
 
             return Ok(cartItem);
         }
 
         [HttpDelete("{id}")]
-        public ActionResult<CartItem> Delete(int id)
+        public async Task<ActionResult<CartItem>> Delete(int id)
         {
-            CartItem cartItem = _db.CartItem.Find(id);
+            CartItem cartItem = await _db.CartItem.FindAsync(id);
 
             if (cartItem == null)
                 return NotFound();
 
             _db.CartItem.Remove(cartItem);
-            _db.SaveChanges();
+            await _db.SaveChangesAsync();
 
             return Ok(cartItem);
         }

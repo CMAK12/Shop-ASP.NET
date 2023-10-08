@@ -37,11 +37,11 @@ namespace MyWebApp.Models
             return session.GetString(CartSessionKey);
         }
 
-        public void AddToCart(Products product)
+        public async Task AddToCartAsync(Products product)
         {
             Id = GetCartId();
 
-            var item = _db.CartItem.SingleOrDefault(c => c.CartId == Id && c.Product.Id == product.Id);
+            var item = await _db.CartItem.SingleOrDefaultAsync(c => c.CartId == Id && c.Product.Id == product.Id);
 
             if (item == null)
             {
@@ -53,30 +53,28 @@ namespace MyWebApp.Models
                     Quantity = 1,
                 };
 
-                _db.CartItem.Add(item);
+                await _db.CartItem.AddAsync(item);
             }
             else
-            {
                 item.Quantity += 1;
-            }
 
-            _db.SaveChanges();
+            await _db.SaveChangesAsync();
         }
 
-        public void RemoveFromCart(CartItem cartItem)
+        public async Task RemoveFromCartAsync(CartItem cartItem)
         {
             if (cartItem != null)
             {
                 _db.CartItem.Remove(cartItem);
-                _db.SaveChanges();
+                await _db.SaveChangesAsync();
             }
         }
 
-        public List<CartItem> GetCartItems()
+        public async Task<List<CartItem>> GetCartItemsAsync()
         {
             Id = GetCartId();
 
-            return _db.CartItem.Include(c => c.Product).Where(c => c.CartId == Id).ToList();
+            return await _db.CartItem.Include(c => c.Product).Where(c => c.CartId == Id).ToListAsync();
         }
     }
 }

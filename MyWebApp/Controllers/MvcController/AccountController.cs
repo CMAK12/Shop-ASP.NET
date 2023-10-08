@@ -5,6 +5,7 @@ using MyWebApp.Models;
 using System.Security.Claims;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.EntityFrameworkCore;
 
 namespace MyWebApp.Controllers.MvcController
 {
@@ -24,11 +25,11 @@ namespace MyWebApp.Controllers.MvcController
         }
 
         [HttpPost]
-        public async Task<IActionResult> SignUp(Users user)
+        public async Task<IActionResult> SignUpAsync(Users user)
         {
             if (ModelState.IsValid)
             {
-                bool isExistingUser = _db.Users.Any(person =>
+                bool isExistingUser = await _db.Users.AnyAsync(person =>
                     person.Username == user.Username || person.Email == user.Email);
 
                 if (isExistingUser)
@@ -41,8 +42,8 @@ namespace MyWebApp.Controllers.MvcController
                 user.Password = PasswordHelper.HashPassword(user.Password);
                 user.Status = "user";
 
-                _db.Users.Add(user);
-                _db.SaveChanges();
+                await _db.Users.AddAsync(user);
+                await _db.SaveChangesAsync();
 
                 var claims = new List<Claim>()
                     {
@@ -67,11 +68,11 @@ namespace MyWebApp.Controllers.MvcController
         }
 
         [HttpPost]
-        public async Task<IActionResult> LogIn(string username, string password)
+        public async Task<IActionResult> LogInAsync(string username, string password)
         {
             if (ModelState.IsValid)
             {
-                Users? foundedUser = _db.Users.SingleOrDefault(person =>
+                Users? foundedUser = await _db.Users.SingleOrDefaultAsync(person =>
                     person.Username == username || person.Email == username);
                 bool verifyPassword = PasswordHelper.VerifyPassword(password, foundedUser?.Password);
 
@@ -99,7 +100,7 @@ namespace MyWebApp.Controllers.MvcController
         }
 
         [Authorize]
-        public async Task<IActionResult> LogOut()
+        public async Task<IActionResult> LogOutAsync()
         {
             await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
 
