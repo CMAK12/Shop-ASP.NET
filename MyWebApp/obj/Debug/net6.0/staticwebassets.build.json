@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "TFsD2SZlgr5UtI4aVtZ7jT3/y6H9rkx761BVA0CAum4=",
+  "Hash": "knHq1iXX01ib9EKz45dM14LcwRsZRiX8BEFT+H42gAk=",
   "Source": "MyWebApp",
   "BasePath": "_content/MyWebApp",
   "Mode": "Default",
@@ -151,6 +151,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\images\\8f95b471-3cd8-4657-8a88-847a5a16f070_sm-f946_zfold5_openfront115_phantom-black_230511-large-webp.webp"
+    },
+    {
+      "Identity": "C:\\Programming\\ASP.NET\\MyWebApp\\MyWebApp\\wwwroot\\images\\f86a6e32-67fc-4f50-94f3-537ed9db81d9_photo_2023-08-14_09-53-41.jpg",
+      "SourceId": "MyWebApp",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Programming\\ASP.NET\\MyWebApp\\MyWebApp\\wwwroot\\",
+      "BasePath": "_content/MyWebApp",
+      "RelativePath": "images/f86a6e32-67fc-4f50-94f3-537ed9db81d9_photo_2023-08-14_09-53-41.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\f86a6e32-67fc-4f50-94f3-537ed9db81d9_photo_2023-08-14_09-53-41.jpg"
     },
     {
       "Identity": "C:\\Programming\\ASP.NET\\MyWebApp\\MyWebApp\\wwwroot\\js\\site.js",

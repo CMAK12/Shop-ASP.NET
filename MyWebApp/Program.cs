@@ -32,7 +32,7 @@ var provider = builder.Services.BuildServiceProvider();
 
 var configuration = provider.GetRequiredService<IConfiguration>();
 
-builder.Services.AddDbContext<ShopDbContext>(item => item.UseSqlServer(configuration.GetConnectionString("myconn")));
+builder.Services.AddDbContext<ShopDbContext>(item => item.UseNpgsql(configuration.GetConnectionString("myconn")));
 
 var app = builder.Build();
 
@@ -56,6 +56,6 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+    pattern: "{controller=Home}/{action=Index}/{id?}")  ;
 
 app.Run();

@@ -1,0 +1,29 @@
+version: '3.4'
+
+services:
+  mywebapp:
+    image: ${DOCKER_REGISTRY-}mywebapp
+    restart: always
+    ports:
+     - "7134:80"
+    container_name: shopasp
+    build:
+      context: ./MyWebApp
+      dockerfile: Dockerfile
+    depends_on:
+     - db
+
+  db:
+   image: postgres
+   restart: always
+   container_name: postgreSQL
+   volumes:
+   - pgdbdata:/var/lib/postgresql/data/
+   environment:
+     POSTGRES_PASSWORD: "123"
+     POSTGRES_USER: postgres
+     POSTGRES_DB: shopasp
+
+volumes:
+ pgdbdata: null
+    

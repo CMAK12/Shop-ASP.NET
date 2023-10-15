@@ -5,6 +5,8 @@ VisualStudioVersion = 17.7.34003.232
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyWebApp", "MyWebApp\MyWebApp.csproj", "{5599D2E5-7688-4411-9B52-35CDB3187EB3}"
 EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{712AA6C6-C059-4364-9028-20CE18E061C8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{5599D2E5-7688-4411-9B52-35CDB3187EB3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5599D2E5-7688-4411-9B52-35CDB3187EB3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5599D2E5-7688-4411-9B52-35CDB3187EB3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{712AA6C6-C059-4364-9028-20CE18E061C8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{712AA6C6-C059-4364-9028-20CE18E061C8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{712AA6C6-C059-4364-9028-20CE18E061C8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{712AA6C6-C059-4364-9028-20CE18E061C8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -115,7 +115,7 @@ namespace MyWebApp.Controllers.MvcController
         {
             if (ModelState.IsValid)
             {
-                await _db.Companies.FindAsync(company);
+                await _db.Companies.AddAsync(company);
                 await _db.SaveChangesAsync();
 
                 return RedirectToAction("Companies");
