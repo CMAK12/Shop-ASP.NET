@@ -7,6 +7,7 @@ For this pet project, I connected PostgreSQL and Docker, implemented robust auth
   - [Prerequisites](#prerequisites)
   - [Installation](#installation)
   - [How to run](#how-to-run)
+- [Usage](#usage)
 - [Disclaimer](#disclaimer-⚠️)
 
 ## Overview
