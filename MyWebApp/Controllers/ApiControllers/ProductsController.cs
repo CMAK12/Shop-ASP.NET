@@ -6,7 +6,7 @@ namespace MyWebApp.Controllers.ApiControllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ProductsController : ControllerBase
+    public class ProductsController : ControllerBase,IRest<Products>
     {
         private readonly ShopDbContext _db;
 

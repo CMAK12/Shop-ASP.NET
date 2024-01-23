@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Programming\\ASP.NET\\MyWebApp\\MyWebApp\\MyWebApp.csproj": {}
+    "c:\\Programming\\ASP.NET\\MyWebApp\\MyWebApp\\MyWebApp.csproj": {}
   },
   "projects": {
-    "C:\\Programming\\ASP.NET\\MyWebApp\\MyWebApp\\MyWebApp.csproj": {
+    "c:\\Programming\\ASP.NET\\MyWebApp\\MyWebApp\\MyWebApp.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Programming\\ASP.NET\\MyWebApp\\MyWebApp\\MyWebApp.csproj",
+        "projectUniqueName": "c:\\Programming\\ASP.NET\\MyWebApp\\MyWebApp\\MyWebApp.csproj",
         "projectName": "MyWebApp",
-        "projectPath": "C:\\Programming\\ASP.NET\\MyWebApp\\MyWebApp\\MyWebApp.csproj",
+        "projectPath": "c:\\Programming\\ASP.NET\\MyWebApp\\MyWebApp\\MyWebApp.csproj",
         "packagesPath": "C:\\Users\\Dmytro\\.nuget\\packages\\",
-        "outputPath": "C:\\Programming\\ASP.NET\\MyWebApp\\MyWebApp\\obj\\",
+        "outputPath": "c:\\Programming\\ASP.NET\\MyWebApp\\MyWebApp\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Dmytro\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -44,10 +44,6 @@
               "target": "Package",
               "version": "[6.32.2, )"
             },
-            "Microsoft.VisualStudio.Azure.Containers.Tools.Targets": {
-              "target": "Package",
-              "version": "[1.19.4, )"
-            },
             "Npgsql.EntityFrameworkCore.PostgreSQL": {
               "target": "Package",
               "version": "[7.0.11, )"
@@ -76,7 +72,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.400\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.402\\RuntimeIdentifierGraph.json"
         }
       }
     }

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "MHCPRiI7vzcikqQg2qW0Ep1WNOFb4kAP9gp8K6e/pzZjCwMHypP5qNntJwv4M/hYtqrQVvL9klEujLYChPzmzg==",
+  "dgSpecHash": "OIdZlzyAfrNXl3JgbAgUbYPmws5Y9PPReLhdtOkRkYPNHXDhW6Za1qH//9ldBY4bFviZaqQVTn59gZ41SY4/GA==",
   "success": true,
-  "projectFilePath": "C:\\Programming\\ASP.NET\\MyWebApp\\MyWebApp\\MyWebApp.csproj",
+  "projectFilePath": "c:\\Programming\\ASP.NET\\MyWebApp\\MyWebApp\\MyWebApp.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Dmytro\\.nuget\\packages\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512",
     "C:\\Users\\Dmytro\\.nuget\\packages\\microsoft.entityframeworkcore\\7.0.11\\microsoft.entityframeworkcore.7.0.11.nupkg.sha512",
@@ -24,7 +24,6 @@
     "C:\\Users\\Dmytro\\.nuget\\packages\\microsoft.identitymodel.tokens\\6.32.2\\microsoft.identitymodel.tokens.6.32.2.nupkg.sha512",
     "C:\\Users\\Dmytro\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
     "C:\\Users\\Dmytro\\.nuget\\packages\\microsoft.netcore.targets\\1.1.0\\microsoft.netcore.targets.1.1.0.nupkg.sha512",
-    "C:\\Users\\Dmytro\\.nuget\\packages\\microsoft.visualstudio.azure.containers.tools.targets\\1.19.4\\microsoft.visualstudio.azure.containers.tools.targets.1.19.4.nupkg.sha512",
     "C:\\Users\\Dmytro\\.nuget\\packages\\microsoft.win32.primitives\\4.3.0\\microsoft.win32.primitives.4.3.0.nupkg.sha512",
     "C:\\Users\\Dmytro\\.nuget\\packages\\netstandard.library\\1.6.1\\netstandard.library.1.6.1.nupkg.sha512",
     "C:\\Users\\Dmytro\\.nuget\\packages\\npgsql\\7.0.6\\npgsql.7.0.6.nupkg.sha512",

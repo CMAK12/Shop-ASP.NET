@@ -39,7 +39,7 @@ namespace MyWebApp.Controllers.MvcController
                     return View(user);
                 }
 
-                user.Password = PasswordHelper.HashPassword(user.Password);
+                user.Password = PasswordHelper.Initialize().HashPassword(user.Password);
                 user.Status = "user";
 
                 await _db.Users.AddAsync(user);
@@ -74,7 +74,7 @@ namespace MyWebApp.Controllers.MvcController
             {
                 Users? foundedUser = await _db.Users.SingleOrDefaultAsync(person =>
                     person.Username == username || person.Email == username);
-                bool verifyPassword = PasswordHelper.VerifyPassword(password, foundedUser?.Password);
+                bool verifyPassword = PasswordHelper.Initialize().VerifyPassword(password, foundedUser?.Password);
 
                 if (foundedUser != null && verifyPassword)
                 {

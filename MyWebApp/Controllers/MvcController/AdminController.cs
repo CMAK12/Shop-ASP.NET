@@ -69,7 +69,7 @@ namespace MyWebApp.Controllers.MvcController
         [HttpGet]
         public async Task<IActionResult> EditProductAsync(int productId)
         {
-            var currentProduct = _db.Products.FindAsync(productId);
+            var currentProduct = await _db.Products.FindAsync(productId);
             ViewBag.Companies = _db.Companies;
 
             if (currentProduct == null)
@@ -167,13 +167,13 @@ namespace MyWebApp.Controllers.MvcController
 
         public IActionResult Users()
         {
-            return View(_db.Companies);
+            return View(_db.Users);
         }
 
         [HttpGet]
         public async Task<IActionResult> EditUserAsync(int userId)
         {
-            var currentUser = await _db.Companies.FindAsync(userId);
+            var currentUser = await _db.Users.FindAsync(userId);
 
             if (currentUser == null)
                 return NotFound();

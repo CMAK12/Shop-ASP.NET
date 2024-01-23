@@ -3,9 +3,21 @@ using System.Text;
 
 namespace MyWebApp.Helpers
 {
-    public static class PasswordHelper
+    public class PasswordHelper
     {
-        public static string HashPassword(string password)
+        private static PasswordHelper _single = null;
+        
+        private PasswordHelper() { }
+
+        public static PasswordHelper Initialize()
+        {
+            if (_single == null)
+                _single = new PasswordHelper();
+
+            return _single;
+        }
+        
+        public string HashPassword(string password)
         {
             using (SHA256 sha256 = SHA256.Create())
             {
@@ -16,7 +28,7 @@ namespace MyWebApp.Helpers
             }
         }
 
-        public static bool VerifyPassword(string password, string hashedPassword)
+        public bool VerifyPassword(string password, string hashedPassword)
         {
             using (SHA256 sha256 = SHA256.Create())
             {

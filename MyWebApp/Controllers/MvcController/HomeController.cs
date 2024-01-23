@@ -40,11 +40,6 @@ namespace MyWebApp.Controllers.MvcController
             return View(foundedProduct);
         }
 
-        public string Nothing()
-        {
-            return "Ne chinazes";
-        }
-
         public IActionResult Privacy() => View();
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
